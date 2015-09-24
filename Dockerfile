@@ -20,11 +20,16 @@ cmake \
 lib32z1 \
 lib32stdc++6 \
 libc6-dev-i386 \
-libstdc++6:i386 \
+#libstdc++6:i386 \
 linux-libc-dev \
 g++ \
 android-tools-adb \
-android-tools-fastboot
+android-tools-fastboot \
+apt-file
+
+RUN apt-file update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+libstdc++6:i386
 
 # may need to update this for 10GB later
 RUN ccache -M 5GB
